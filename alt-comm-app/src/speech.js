@@ -23,7 +23,7 @@ class Speech extends Component {
       const text = event.results[0][0].transcript;
       console.log(`text detected: ${text}`);
       this.setState({ interimText: text });
-      // Wait 5 seconds
+      // Wait 2 seconds
       setTimeout(() => {
         console.log('You can speak again now');
         this.startVoiceRecord();
@@ -66,7 +66,7 @@ class Speech extends Component {
         <span>
           {choices.map((choice, i) => {
             return (
-              <Card style={{ width: '18rem', margin: '2rem', backgroundColor: '#006600' }}>
+              <Card style={{ width: '18rem', margin: '2rem', backgroundColor: '#00CCFF'}}>
                 <Card.Img variant="top" />
                 <Card.Body>
                   <Card.Text>

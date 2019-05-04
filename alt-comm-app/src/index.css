@@ -23,3 +23,9 @@ code {
   height: 250px;
   background-color: blue;
 }
+
+#eye-location {
+  height: 50px;
+  width: 50px;
+  background-color: green;
+}
