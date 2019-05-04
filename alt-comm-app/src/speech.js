@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import { Container, Button, Card } from 'react-bootstrap';
+import $ from 'jquery';
+require('./jquery.min.js');
 
 class Speech extends Component {
   state = {
     finalisedText: ['start'],
-    interimText: ''
+    interimText: '',
+    clickedXPosition: 0,
+    clickedYPosition: 0,
   };
 
   componentDidMount() {
     this.startVoiceRecord();
+    window.webgazer.setGazeListener(function(data, elapsedTime) {
+      if (data == null) {
+          return;
+      }
+      var xprediction = data.x; //these x coordinates are relative to the viewport
+      var yprediction = data.y; //these y coordinates are relative to the viewport
+      $('#eye-location').css({top: yprediction, left: xprediction, position: 'absolute'});
+    }).begin();
   }
 
   startVoiceRecord() {
@@ -33,7 +45,6 @@ class Speech extends Component {
 
   render() {
     const {finalizedText, interimText} = this.state;
-
     let choices = [];
     const choicesInitial = [
       'Happy',

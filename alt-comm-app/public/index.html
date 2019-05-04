@@ -37,17 +37,5 @@
     -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="webgazer.js" type="text/javascript"></script>
-    <script>
-        webgazer.setGazeListener(function(data, elapsedTime) {
-          if (data == null) {
-              return;
-          }
-          var prediction = webgazer.getCurrentPrediction();
-          var xprediction = data.x; //these x coordinates are relative to the viewport
-          var yprediction = data.y; //these y coordinates are relative to the viewport
-          console.log(`${xprediction}, ${yprediction}`);
-          $('#eye-location').css({top: yprediction, left: xprediction, position: 'absolute'});
-        }).begin();
-    </script>
   </body>
 </html>
